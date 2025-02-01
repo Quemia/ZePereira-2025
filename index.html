@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exibição de Imagem pelo QR Code</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+      }
+      img {
+        max-width: 300px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Imagem com Base no QR Code</h1>
+      <img id="image" src="" alt="Imagem do QR Code" />
+    </div>
+
+    <script>
+      // Obtém os parâmetros da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const dia = urlParams.get("dia");
+      const status = urlParams.get("status") === "true"; // Converte para booleano
+
+      // Lógica para determinar a imagem
+      let imageUrl = "";
+      if (dia === "01") {
+        imageUrl = status
+          ? "/public/CAPIVARA_PINTADA_COM_CAMADAS.png"
+          : "/public/CAPIVARA_PINTADA_COM_CAMADAS.png";
+      } else if (dia === "02") {
+        imageUrl = status
+          ? "/public/JOÃO FRANCISCO LISBOA Pequena.png"
+          : "/public/JOÃO FRANCISCO LISBOA Pequena.png";
+      }
+
+      // Atribui o caminho da imagem ao elemento <img>
+      document.getElementById("image").src = imageUrl;
+    </script>
+  </body>
+</html>
